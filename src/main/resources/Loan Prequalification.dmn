@@ -194,8 +194,8 @@
     <dmn:informationRequirement id="_CCFCE14C-3C6F-4961-99B7-66C9B8CD067F">
       <dmn:requiredInput href="#_11C3C48D-FEF7-471E-B716-2757176FD302"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_04E992B4-685F-4C9D-AC5C-3966BE6465DA">
-      <dmn:text></dmn:text>
+    <dmn:literalExpression id="_7F1FA4AA-FD0D-46FD-A1E5-4A546C2023CA">
+      <dmn:text>0.0125*Purchase price/12+3.50*(Purchase price/1000)/12</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_CFF54643-7C4A-4B57-8433-6D28B9EF1063" name="Monthly income">
@@ -274,7 +274,9 @@
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_7CD99671-6655-4144-9E3B-3836FEA1CEDE"/>
-          <kie:ComponentWidths dmnElementRef="_04E992B4-685F-4C9D-AC5C-3966BE6465DA"/>
+          <kie:ComponentWidths dmnElementRef="_7F1FA4AA-FD0D-46FD-A1E5-4A546C2023CA">
+            <kie:width>497.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3CB44D51-0D3A-431B-BC24-D2EECD6096C3">
             <kie:width>328.0</kie:width>
           </kie:ComponentWidths>
