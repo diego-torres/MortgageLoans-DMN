@@ -37,8 +37,8 @@
     <dmn:informationRequirement id="_5A6CDEA5-4E86-43D4-A6C1-9A1D23AF9A69">
       <dmn:requiredDecision href="#_E45383AC-80BA-4801-A778-991BC863A5C7"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_174AFE34-4564-4F83-B3D2-C8E4810F7397">
-      <dmn:text></dmn:text>
+    <dmn:literalExpression id="_26FC71FD-69AB-4A90-978A-D515D57DD2B5">
+      <dmn:text>Loan payment+Tax and insurance payment</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:knowledgeSource id="_9316D495-21EF-4A88-945C-C0E28A3FFB1A" name="Loan approval guidelines" locationURI="">
@@ -262,7 +262,9 @@
     <dmndi:DMNDiagram>
       <di:extension>
         <kie:ComponentsWidthsExtension>
-          <kie:ComponentWidths dmnElementRef="_174AFE34-4564-4F83-B3D2-C8E4810F7397"/>
+          <kie:ComponentWidths dmnElementRef="_26FC71FD-69AB-4A90-978A-D515D57DD2B5">
+            <kie:width>387.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_84DA3103-5BD5-49CD-9155-DDD850004D4D"/>
           <kie:ComponentWidths dmnElementRef="_3ABC738A-3535-4C83-9CFC-1DF3F1ABB5E2">
             <kie:width>50.0</kie:width>
