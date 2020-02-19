@@ -211,8 +211,8 @@
     <dmn:informationRequirement id="_A2045F50-4DB8-4BE2-9584-7A549DD95113">
       <dmn:requiredInput href="#_CFF54643-7C4A-4B57-8433-6D28B9EF1063"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_B66C4BDB-1ECB-4412-9E23-AA379F8CE099">
-      <dmn:text></dmn:text>
+    <dmn:literalExpression id="_3CB44D51-0D3A-431B-BC24-D2EECD6096C3">
+      <dmn:text>Housing expense/Monthly income*100</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_84E58A21-A004-44BF-B0D6-05EBB7F13E1C" name="Loan rate pct">
@@ -225,9 +225,38 @@
     <dmn:informationRequirement id="_22358B10-2DA7-4182-991E-5F8BFAA14CEF">
       <dmn:requiredDecision href="#_2627446C-E5FB-40DE-AB56-E5FFE6A72CF3"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_BCAE9B1B-56F1-4293-AB88-372C74FA276E">
-      <dmn:text></dmn:text>
-    </dmn:literalExpression>
+    <dmn:decisionTable id="_CF846682-E130-4B08-848C-E945D3F347D5" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_97D13944-DBE9-45A5-B452-00078AAFD0A7">
+        <dmn:inputExpression id="_33ECE66A-8C52-4369-9609-BBC2464C0C0F" typeRef="tPercent">
+          <dmn:text>DTI pct</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_D18E941A-8289-4859-B943-0591BA0DD551" typeRef="tAffordabilityCategory"/>
+      <dmn:rule id="_8B21C5E7-9FCB-41E6-967A-C2A0EFBB277E">
+        <dmn:inputEntry id="_F3B0C859-D5E0-404B-8993-0E435070669C">
+          <dmn:text>&lt;26</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_CB435E33-65DE-46F3-8740-FBB89FF6209B">
+          <dmn:text>"Affordable"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_A779D5DE-B47F-4825-A98D-7EB2BF109D90">
+        <dmn:inputEntry id="_52B49539-3704-4596-98BC-DE3AAD4ACD14">
+          <dmn:text>[26..28]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_69020FD1-64FF-4236-AE5E-F5EF0FCE0182">
+          <dmn:text>"Marginal"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_6B9F6CA9-801F-409F-961E-6FA93E78F55A">
+        <dmn:inputEntry id="_421151EC-2FAF-446D-A825-E4DBF2C0B47E">
+          <dmn:text>&gt;28</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A4D8E825-609B-40B2-93A9-3BA4D961BF43">
+          <dmn:text>"Unaffordable"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
   </dmn:decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
@@ -244,8 +273,15 @@
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_04E992B4-685F-4C9D-AC5C-3966BE6465DA"/>
-          <kie:ComponentWidths dmnElementRef="_B66C4BDB-1ECB-4412-9E23-AA379F8CE099"/>
-          <kie:ComponentWidths dmnElementRef="_BCAE9B1B-56F1-4293-AB88-372C74FA276E"/>
+          <kie:ComponentWidths dmnElementRef="_3CB44D51-0D3A-431B-BC24-D2EECD6096C3">
+            <kie:width>328.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_CF846682-E130-4B08-848C-E945D3F347D5">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>187.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
       <dmndi:DMNShape id="dmnshape-_6EC8399A-8604-4988-A480-0E82B36BA8B2" dmnElementRef="_6EC8399A-8604-4988-A480-0E82B36BA8B2" isCollapsed="false">
