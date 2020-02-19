@@ -22,9 +22,15 @@
       <dmn:text>&gt;0</dmn:text>
     </dmn:allowedValues>
   </dmn:itemDefinition>
+  <dmn:itemDefinition id="_9FF23FE4-3C3F-40DB-9E3F-0BD71052DF82" name="tAffordabilityCategory" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues kie:constraintType="enumeration" id="_0AB2743F-0F19-45FD-B26C-4D64C0AA025C">
+      <dmn:text>"Affordable", "Marginal", "Unaffordable"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
   <dmn:decision id="_6EC8399A-8604-4988-A480-0E82B36BA8B2" name="Housing expense">
     <dmn:extensionElements/>
-    <dmn:variable id="_DD8361B7-D9D2-463C-8BDB-A19096B4D956" name="Housing expense"/>
+    <dmn:variable id="_DD8361B7-D9D2-463C-8BDB-A19096B4D956" name="Housing expense" typeRef="tPositiveNumber"/>
     <dmn:informationRequirement id="_14DE703B-A1DE-4987-8703-3392AC37B1FA">
       <dmn:requiredDecision href="#_D9543E31-8F7B-492F-AA61-5664911169FC"/>
     </dmn:informationRequirement>
@@ -116,7 +122,7 @@
   </dmn:inputData>
   <dmn:decision id="_2B274D0F-7E48-41B1-8DDB-812B08EC069D" name="Affordability category">
     <dmn:extensionElements/>
-    <dmn:variable id="_C9168A9E-BA17-4FBF-B498-556FAC5033DA" name="Affordability category"/>
+    <dmn:variable id="_C9168A9E-BA17-4FBF-B498-556FAC5033DA" name="Affordability category" typeRef="tAffordabilityCategory"/>
     <dmn:informationRequirement id="_22358B10-2DA7-4182-991E-5F8BFAA14CEF">
       <dmn:requiredDecision href="#_2627446C-E5FB-40DE-AB56-E5FFE6A72CF3"/>
     </dmn:informationRequirement>
