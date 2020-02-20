@@ -173,19 +173,39 @@
   </dmn:decision>
   <dmn:decision id="_E45383AC-80BA-4801-A778-991BC863A5C7" name="Loan payment">
     <dmn:extensionElements/>
-    <dmn:variable id="_25A235DA-77C7-4FD9-8A28-B412CB3888F7" name="Loan payment" typeRef="tPositiveNumber"/>
+    <dmn:variable id="_25A235DA-77C7-4FD9-8A28-B412CB3888F7" name="Loan payment" typeRef="number"/>
     <dmn:informationRequirement id="_A4D35E7A-2A9B-4A16-84BA-9233233AB3CE">
       <dmn:requiredDecision href="#_F0A79234-8F4C-4F75-8A6A-5E06A7015FB2"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_A38E03A1-FCE0-49A0-BBB6-C90FE1CFACDA">
       <dmn:requiredInput href="#_84E58A21-A004-44BF-B0D6-05EBB7F13E1C"/>
     </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_696FBD6E-F140-4256-8509-71D69D16BD27">
-      <dmn:requiredKnowledge href="#_D155D168-488D-4F6A-9CD7-51896BCB977D"/>
+    <dmn:knowledgeRequirement id="_25E3231D-74A2-4977-AECB-083A30B2D635">
+      <dmn:requiredKnowledge href="#_6B39CCEE-D3F7-41B4-852D-E58994661D8E"/>
     </dmn:knowledgeRequirement>
-    <dmn:literalExpression id="_7CD99671-6655-4144-9E3B-3836FEA1CEDE">
-      <dmn:text></dmn:text>
-    </dmn:literalExpression>
+    <dmn:invocation id="_DDA3F198-F5B2-4FE9-B646-B8AF8ACD3F77">
+      <dmn:literalExpression id="_2206EEB2-3116-4EDE-A750-FFD56BAE4095">
+        <dmn:text>Loan Amortization Formula</dmn:text>
+      </dmn:literalExpression>
+      <dmn:binding>
+        <dmn:parameter id="_62AE5F68-62D9-4FF5-8005-19F2771AC293" name="p" typeRef="number"/>
+        <dmn:literalExpression id="_51B19006-DF87-4DEA-A581-FE6CFFA34CFA">
+          <dmn:text>Loan amount</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+      <dmn:binding>
+        <dmn:parameter id="_E4AB0BE4-A07F-4A0D-B7B6-14FA364CFB0E" name="r" typeRef="number"/>
+        <dmn:literalExpression id="_3F77BED4-87E5-4357-9A82-AE27E9678832">
+          <dmn:text>Loan rate pct/100</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+      <dmn:binding>
+        <dmn:parameter id="_6A03BAA0-6DFD-41BA-99B3-7683F8B6B200" name="n" typeRef="number"/>
+        <dmn:literalExpression id="_393AE1F6-C996-4249-9593-367CFCB1103B">
+          <dmn:text>360</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+    </dmn:invocation>
   </dmn:decision>
   <dmn:inputData id="_AF25E975-6C16-4E25-AFF2-B6EA002B9FB9" name="Down payment">
     <dmn:extensionElements/>
@@ -205,6 +225,19 @@
     <dmn:extensionElements/>
     <dmn:variable id="_6FFE6521-F19F-48F9-97A3-BA2D5081636A" name="Monthly income" typeRef="tPositiveNumber"/>
   </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_6B39CCEE-D3F7-41B4-852D-E58994661D8E" name="Loan Amortization Formula">
+    <dmn:description>loan amortization assuming monthly payments.</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_8F4ED4B6-B456-478E-85EA-ECE984AB20B8" name="Loan Amortization Formula" typeRef="number"/>
+    <dmn:encapsulatedLogic id="_FEA88BD6-EC9F-4871-93B2-1C052DE48C7F" kind="FEEL">
+      <dmn:formalParameter id="_90B1B73D-3652-4098-B8E5-08E134280A2B" name="p" typeRef="number"/>
+      <dmn:formalParameter id="_9DE1546C-031B-4AC2-AEA9-25F71DD609EB" name="r" typeRef="number"/>
+      <dmn:formalParameter id="_705B77CF-9F97-40B1-BC97-9C13C47329D3" name="n" typeRef="number"/>
+      <dmn:literalExpression id="_EFD07412-7CE9-43B2-A985-6655347E24AA">
+        <dmn:text>p*r/12/(1-(1+r/12)**-n)</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_2627446C-E5FB-40DE-AB56-E5FFE6A72CF3" name="DTI pct">
     <dmn:extensionElements/>
     <dmn:variable id="_81789313-6847-40C0-B987-8F8A8D4E7D53" name="DTI pct" typeRef="tPercent"/>
@@ -222,19 +255,6 @@
     <dmn:extensionElements/>
     <dmn:variable id="_1F295CF5-CD1D-40B5-9EFD-3BC6122CF981" name="Loan rate pct" typeRef="tPercent"/>
   </dmn:inputData>
-  <dmn:businessKnowledgeModel id="_D155D168-488D-4F6A-9CD7-51896BCB977D" name="Loan Amortization Formula">
-    <dmn:description>This is the standard loan amortization formula</dmn:description>
-    <dmn:extensionElements/>
-    <dmn:variable id="_1C72107F-1B4F-4D70-BA86-F4794A0AFBC7" name="Loan Amortization Formula"/>
-    <dmn:encapsulatedLogic id="_83C94092-F382-4712-9222-39BFCDE51E4E" kind="FEEL">
-      <dmn:formalParameter id="_EA917A51-E33E-4067-ADE5-FCAF90219469" name="p" typeRef="number"/>
-      <dmn:formalParameter id="_93A48181-92B1-4289-B307-8F9360FB5B03" name="r" typeRef="number"/>
-      <dmn:formalParameter id="_E8496FE4-F8E2-4C01-A3A6-538A95184B5B" name="n" typeRef="number"/>
-      <dmn:literalExpression id="_1A5AC618-FD12-49BC-B71E-18CEC9634031">
-        <dmn:text>p*r/12/(1-(1+r/12))**-n)</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
   <dmn:decision id="_2B274D0F-7E48-41B1-8DDB-812B08EC069D" name="Affordability category">
     <dmn:extensionElements/>
     <dmn:variable id="_C9168A9E-BA17-4FBF-B498-556FAC5033DA" name="Affordability category" typeRef="tAffordabilityCategory"/>
@@ -291,16 +311,30 @@
             <kie:width>168.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_7CD99671-6655-4144-9E3B-3836FEA1CEDE"/>
+          <kie:ComponentWidths dmnElementRef="_DDA3F198-F5B2-4FE9-B646-B8AF8ACD3F77">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>206.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_2206EEB2-3116-4EDE-A750-FFD56BAE4095"/>
+          <kie:ComponentWidths dmnElementRef="_51B19006-DF87-4DEA-A581-FE6CFFA34CFA">
+            <kie:width>206.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3F77BED4-87E5-4357-9A82-AE27E9678832">
+            <kie:width>206.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_393AE1F6-C996-4249-9593-367CFCB1103B">
+            <kie:width>206.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EFD07412-7CE9-43B2-A985-6655347E24AA">
+            <kie:width>440.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FEA88BD6-EC9F-4871-93B2-1C052DE48C7F">
+            <kie:width>50.0</kie:width>
+            <kie:width>440.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_7F1FA4AA-FD0D-46FD-A1E5-4A546C2023CA">
             <kie:width>497.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_1A5AC618-FD12-49BC-B71E-18CEC9634031">
-            <kie:width>365.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_83C94092-F382-4712-9222-39BFCDE51E4E">
-            <kie:width>50.0</kie:width>
-            <kie:width>365.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3CB44D51-0D3A-431B-BC24-D2EECD6096C3">
             <kie:width>328.0</kie:width>
@@ -376,6 +410,15 @@
         <dc:Bounds x="512" y="623" width="192.22222222222223" height="85.55555555555554"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6B39CCEE-D3F7-41B4-852D-E58994661D8E" dmnElementRef="_6B39CCEE-D3F7-41B4-852D-E58994661D8E" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="811" y="619.6798969370623" width="210" height="93"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_AF25E975-6C16-4E25-AFF2-B6EA002B9FB9" dmnElementRef="_AF25E975-6C16-4E25-AFF2-B6EA002B9FB9" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -401,15 +444,6 @@
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="656.2990654205607" y="486" width="203.33333333333337" height="70"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_D155D168-488D-4F6A-9CD7-51896BCB977D" dmnElementRef="_D155D168-488D-4F6A-9CD7-51896BCB977D" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="839" y="629.8330177962894" width="190" height="78"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_2627446C-E5FB-40DE-AB56-E5FFE6A72CF3" dmnElementRef="_2627446C-E5FB-40DE-AB56-E5FFE6A72CF3" isCollapsed="false">
@@ -475,8 +509,8 @@
         <di:waypoint x="765.7435098650052" y="943"/>
         <di:waypoint x="608.1111111111111" y="708.5555555555555"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_696FBD6E-F140-4256-8509-71D69D16BD27" dmnElementRef="_696FBD6E-F140-4256-8509-71D69D16BD27">
-        <di:waypoint x="839" y="668.8330177962894"/>
+      <dmndi:DMNEdge id="dmnedge-_25E3231D-74A2-4977-AECB-083A30B2D635" dmnElementRef="_25E3231D-74A2-4977-AECB-083A30B2D635">
+        <di:waypoint x="811" y="666.1798969370623"/>
         <di:waypoint x="704.2222222222222" y="665.7777777777778"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CCFCE14C-3C6F-4961-99B7-66C9B8CD067F" dmnElementRef="_CCFCE14C-3C6F-4961-99B7-66C9B8CD067F">
