@@ -156,7 +156,7 @@
           <expressionAlias>value</expressionAlias>
           <genericTypes/>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>114.0</columnWidth>
+          <columnWidth>115.65698478561549</columnWidth>
         </FactMapping>
         <FactMapping>
           <expressionElements>
@@ -261,7 +261,7 @@
           <expressionAlias>value</expressionAlias>
           <genericTypes/>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>114.0</columnWidth>
+          <columnWidth>123.47164591977868</columnWidth>
         </FactMapping>
         <FactMapping>
           <expressionElements>
@@ -364,7 +364,7 @@
               <name>1|6</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">Affordable</rawValue>
+            <rawValue class="string">&quot;Affordable&quot;</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -375,7 +375,7 @@
               <name>1|7</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">18.73693</rawValue>
+            <rawValue class="string">18.73692980748003371766365703983365</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -386,7 +386,7 @@
               <name>1|8</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">1030.53119</rawValue>
+            <rawValue class="string">1030.531139411401854471501137190851</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -408,7 +408,7 @@
               <name>1|10</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">763.864473</rawValue>
+            <rawValue class="string">763.8644727447351878048344705241841</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -419,7 +419,7 @@
               <name>1|11</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">Possibly approved</rawValue>
+            <rawValue class="string">&quot;Possibly approved&quot;</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -430,7 +430,7 @@
               <name>1|12</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">266.666667</rawValue>
+            <rawValue class="string">266.6666666666666666666666666666666</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
