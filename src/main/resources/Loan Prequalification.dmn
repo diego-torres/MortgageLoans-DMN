@@ -223,6 +223,7 @@
     <dmn:variable id="_1F295CF5-CD1D-40B5-9EFD-3BC6122CF981" name="Loan rate pct" typeRef="tPercent"/>
   </dmn:inputData>
   <dmn:businessKnowledgeModel id="_D155D168-488D-4F6A-9CD7-51896BCB977D" name="Loan Amortization Formula">
+    <dmn:description>This is the standard loan amortization formula</dmn:description>
     <dmn:extensionElements/>
     <dmn:variable id="_1C72107F-1B4F-4D70-BA86-F4794A0AFBC7" name="Loan Amortization Formula"/>
     <dmn:encapsulatedLogic id="_83C94092-F382-4712-9222-39BFCDE51E4E" kind="FEEL">
