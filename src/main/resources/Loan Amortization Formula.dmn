@@ -1,11 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_2A4D7681-937B-4AB9-9846-D8111AAB6D2E" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_6022DE43-3CF4-4C85-9636-62E94B5E9734" name="Loan Amortization Formula" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_2A4D7681-937B-4AB9-9846-D8111AAB6D2E">
   <dmn:extensionElements/>
+  <dmn:businessKnowledgeModel id="_A344CBC2-7BEA-45CC-9D44-8170FAC3366F" name="Loan Amortization Formula">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D28C3372-CF98-4971-8EDD-E2E612994C65" name="Loan Amortization Formula" typeRef="number"/>
+    <dmn:encapsulatedLogic id="_3CE409A9-DFE6-4229-A1C0-0206A4C032ED" kind="FEEL">
+      <dmn:formalParameter id="_E71B0811-D8F8-40BD-856B-7CEBEB7B8297" name="p" typeRef="number"/>
+      <dmn:formalParameter id="_5604FB91-BFE5-4459-9F90-0FB4BD08198D" name="r" typeRef="number"/>
+      <dmn:formalParameter id="_7C583F88-7BB7-4951-9A19-F1D838649526" name="n" typeRef="number"/>
+      <dmn:literalExpression id="_41B02ABC-4BC2-4331-8226-E23D7824DE17">
+        <dmn:text>p*r/12/(1-(1+r/12)**-n)</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <di:extension>
-        <kie:ComponentsWidthsExtension/>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_41B02ABC-4BC2-4331-8226-E23D7824DE17">
+            <kie:width>362.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3CE409A9-DFE6-4229-A1C0-0206A4C032ED">
+            <kie:width>50.0</kie:width>
+            <kie:width>362.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
       </di:extension>
+      <dmndi:DMNShape id="dmnshape-_A344CBC2-7BEA-45CC-9D44-8170FAC3366F" dmnElementRef="_A344CBC2-7BEA-45CC-9D44-8170FAC3366F" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="326" y="188" width="216" height="87"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </dmn:definitions>
