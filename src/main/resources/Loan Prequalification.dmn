@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_914D40A0-94AF-4E91-B6E9-D81C386FC8C3" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_CD89DCDA-92AE-45FD-B0C7-476345FA058E" name="Loan Prequalification" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_914D40A0-94AF-4E91-B6E9-D81C386FC8C3">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_914D40A0-94AF-4E91-B6E9-D81C386FC8C3" xmlns:included1="https://kiegroup.org/dmn/_2A4D7681-937B-4AB9-9846-D8111AAB6D2E" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_CD89DCDA-92AE-45FD-B0C7-476345FA058E" name="Loan Prequalification" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_914D40A0-94AF-4E91-B6E9-D81C386FC8C3">
   <dmn:extensionElements/>
+  <dmn:import id="_A25FA691-0EBF-4D54-A0EA-EB9955D22678" name="Loan Amortization Formula model" namespace="https://kiegroup.org/dmn/_2A4D7681-937B-4AB9-9846-D8111AAB6D2E" locationURI="Loan Amortization Formula.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:itemDefinition id="_3786B8B0-8399-4BF5-A99D-3DDD08744A7A" name="tLoanPrequalification" isCollection="false">
     <dmn:typeRef>string</dmn:typeRef>
     <dmn:allowedValues kie:constraintType="enumeration" id="_C4E77266-E55B-4C1D-929A-1704FDC539FD">
@@ -71,7 +72,32 @@
     <dmn:informationRequirement id="_A38E03A1-FCE0-49A0-BBB6-C90FE1CFACDA">
       <dmn:requiredInput href="#_84E58A21-A004-44BF-B0D6-05EBB7F13E1C"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression/>
+    <dmn:knowledgeRequirement id="_013125E9-D4F0-4BB6-85B5-81CBD877554C">
+      <dmn:requiredKnowledge href="https://kiegroup.org/dmn/_2A4D7681-937B-4AB9-9846-D8111AAB6D2E#_A344CBC2-7BEA-45CC-9D44-8170FAC3366F"/>
+    </dmn:knowledgeRequirement>
+    <dmn:invocation id="_F4ED8AF5-683F-4ABE-A5D4-FFB164427D53">
+      <dmn:literalExpression id="_A137FE49-1C1F-4CD3-9224-86FB6A9BF63B">
+        <dmn:text>Loan Amortization Formula</dmn:text>
+      </dmn:literalExpression>
+      <dmn:binding>
+        <dmn:parameter id="_9D61971A-8C16-468A-ABA6-EEADEBB6AF17" name="p" typeRef="number"/>
+        <dmn:literalExpression id="_82A9AAAE-2F08-45F5-9B7E-DD88BAEBF3EB">
+          <dmn:text>Loan Amount</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+      <dmn:binding>
+        <dmn:parameter id="_CF706B5C-097F-4877-BE3E-CD30FAC78B1A" name="r" typeRef="number"/>
+        <dmn:literalExpression id="_8ABE075F-598C-4441-9E5A-A99D6997D344">
+          <dmn:text>Loan rate pct/100</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+      <dmn:binding>
+        <dmn:parameter id="_ED0226DE-8B19-4584-A2BC-9992120425CA" name="n" typeRef="number"/>
+        <dmn:literalExpression id="_78B8BBB3-F8C0-4F8C-90D7-D162F72D61FB">
+          <dmn:text>360</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+    </dmn:invocation>
   </dmn:decision>
   <dmn:decision id="_AE1C1B7B-8D35-4F88-B8F4-87147118A041" name="Loan prequalification">
     <dmn:extensionElements/>
@@ -266,6 +292,21 @@
           <kie:ComponentWidths dmnElementRef="_937361A7-E138-428C-8810-24DA356C26D0">
             <kie:width>272.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F4ED8AF5-683F-4ABE-A5D4-FFB164427D53">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>150.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_A137FE49-1C1F-4CD3-9224-86FB6A9BF63B"/>
+          <kie:ComponentWidths dmnElementRef="_82A9AAAE-2F08-45F5-9B7E-DD88BAEBF3EB">
+            <kie:width>150.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8ABE075F-598C-4441-9E5A-A99D6997D344">
+            <kie:width>150.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_78B8BBB3-F8C0-4F8C-90D7-D162F72D61FB">
+            <kie:width>150.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3ABC738A-3535-4C83-9CFC-1DF3F1ABB5E2">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -359,6 +400,15 @@
         <dc:Bounds x="459.8515057113188" y="939" width="195.55555555555554" height="78.88888888888891"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-included1:_A344CBC2-7BEA-45CC-9D44-8170FAC3366F" dmnElementRef="included1:_A344CBC2-7BEA-45CC-9D44-8170FAC3366F" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="805" y="617.5075965347612" width="210" height="93"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_D9543E31-8F7B-492F-AA61-5664911169FC" dmnElementRef="_D9543E31-8F7B-492F-AA61-5664911169FC" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -427,6 +477,10 @@
       <dmndi:DMNEdge id="dmnedge-_A38E03A1-FCE0-49A0-BBB6-C90FE1CFACDA" dmnElementRef="_A38E03A1-FCE0-49A0-BBB6-C90FE1CFACDA">
         <di:waypoint x="765.7435098650052" y="943"/>
         <di:waypoint x="608.1111111111111" y="708.5555555555555"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_013125E9-D4F0-4BB6-85B5-81CBD877554C" dmnElementRef="_013125E9-D4F0-4BB6-85B5-81CBD877554C">
+        <di:waypoint x="805" y="664.0075965347612"/>
+        <di:waypoint x="704.2222222222222" y="665.7777777777778"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A75A228A-F7FC-42D7-BEA4-E0797A99A5B4" dmnElementRef="_A75A228A-F7FC-42D7-BEA4-E0797A99A5B4">
         <di:waypoint x="314" y="231.3421052631579"/>
